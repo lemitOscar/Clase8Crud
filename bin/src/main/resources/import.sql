@@ -1,0 +1,2 @@
+insert into clientes (id,nombre,apellido,email,fecha) values (1,'oscar','Rodriguez','oscar@gmail.com','2017-08-28');
+insert into clientes (id,nombre,apellido,email,fecha) values (2,'ivan','Rodriguez','ivan@gmail.com','2021-06-22');
