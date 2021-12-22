@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -46,6 +47,7 @@ public class Cliente implements Serializable {
 	private String apellido;
 
 	@NotEmpty
+	@Email
 	private String email;
 
 	// esto es un serializador se ocupara despues

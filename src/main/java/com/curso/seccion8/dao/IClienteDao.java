@@ -1,9 +1,9 @@
 package com.curso.seccion8.dao;
 
-import java.util.List;
 
 import com.curso.seccion8.modelEntity.Cliente;
 
+import org.springframework.data.repository.CrudRepository;
 
 /*
  * Que es un DAO?
@@ -14,9 +14,20 @@ import com.curso.seccion8.modelEntity.Cliente;
  * esta inerfaz tiene que tener los metodos necesarios para recuperar y almacenar los datos(contrato de implementacion)
  * con las operaciones basicas : crud y otras mas etc
  * */
-public interface IClienteDao {
-    public List<Cliente> buscarTodos();
+public interface IClienteDao extends CrudRepository<Cliente,Long>{
 
-    //guardar usuario
-    public void guardar(Cliente cliente);
+
+
+
+    //todo esto se puede generar de manera automatica
+    // public List<Cliente> buscarTodos();
+
+    // // guardar usuario
+    // public void guardar(Cliente cliente);
+
+    // // buscar cliente por id
+    // public Cliente findOne(Long id);
+
+    // // eliminar
+    // public void delete(Long id);
 }

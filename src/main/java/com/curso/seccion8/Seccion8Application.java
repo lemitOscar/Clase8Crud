@@ -18,9 +18,7 @@ public class Seccion8Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		logMymessage.info("hola soy el logger... jijiji");
-
+		logMymessage.info("Inicie con exito...");
 	}
 
 }
