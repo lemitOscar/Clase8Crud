@@ -28,9 +28,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  *  Es aquí donde nace la importancia de la anotación @Entity,
  * */
 
- /*
- * existen varias validaciones tienes que investigar
- * */
+/*
+* existen varias validaciones tienes que investigar
+* */
 
 @Entity
 @Table(name = "clientes")
@@ -60,6 +60,16 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull
 	private Date createAt;
+
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	/*
 	 * prepersit antes de insertar en la bd

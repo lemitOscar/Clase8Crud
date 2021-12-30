@@ -1,44 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head th:replace="layout/layout :: cdn"></head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-  <body>
-    <!--Barra de navegacion-->
+<head th:replace="layout/layout :: cdn"></head>
 
-    <nav th:replace="layout/layout :: menuAll"></nav>
+<body>
+	<!--Barra de navegacion-->
+	<nav th:replace="layout/layout :: menuAll"></nav>
+	<!-- mensajes de alerta para el usuario -->
+	<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+	<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+	<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+	<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+	<h1 class="text-center">Registro de Usuarios :)</h1>
+	<div class="row justify-content-center mt-5">
+		<div class="continer col-md-8">
+			<table class="table table-warning table-striped">
+				<thead>
+					<tr>
+						<th scope="col">id</th>
+						<th scope="col">nombre</th>
+						<th scope="col">apellido</th>
+						<th scope="col">fecha</th>
+						<th>Acción</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cliente : ${clientes}">
+						<td><a th:href="@{/ver/}+${cliente.id}" th:text="${cliente.id}" class="btn btn-info"></a></td>
+						<td th:text="${cliente.nombre}"></td>
+						<td th:text="${cliente.apellido}"></td>
+						<td th:text="${cliente.createAt}"></td>
+						<td>
+							<a class="btn btn-info" th:href="@{/form/}+${cliente.id}">Actualizar</a>
+							<a class="btn btn-warning" th:href="@{/eliminar/}+${cliente.id}">ELiminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<nav th:if="${clientes.totalPages > 0}" aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item">
+						<a th:href="@{/usuarios/(page=${clientes.number -1})}" class="page-link">Anterior</a>
+					</li>
+					<li class="page-item">
+						<a th:href="@{/usuarios/(page=${clientes.number +1})}" class="page-link">Siguiente</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div th:replace="layout/layout :: script"></div>
+</body>
 
-    <div class="row justify-content-center mt-5">
-      <div class="continer col-md-8">
-        <table class="table table-warning table-striped">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">nombre</th>
-              <th scope="col">apellido</th>
-              <th scope="col">fecha</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="cliente : ${clientes}">
-              <td th:text="${cliente.id}"></td>
-              <td th:text="${cliente.nombre}"></td>
-              <td th:text="${cliente.apellido}"></td>
-              <td th:text="${cliente.createAt}"></td>
-              <td>
-                <a class="btn btn-info" th:href="@{/form/}+${cliente.id}"
-                  >Actualizar</a
-                >
-                <a class="btn btn-warning" th:href="@{/eliminar/}+${cliente.id}"
-                  >ELiminar</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div th:replace="layout/layout :: script"></div>
-  </body>
 </html>

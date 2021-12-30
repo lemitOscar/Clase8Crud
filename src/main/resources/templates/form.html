@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="layout/layout :: cdn"> </head>
 
-  <body>
-    <!--Barra de navegacion-->
+<head th:replace="layout/layout :: cdn"> </head>
 
-    <nav th:replace="layout/layout :: menuAll"></nav>
+<body>
+  <!--Barra de navegacion-->
 
-    <!--formulario de registro de usuarios-->
+  <nav th:replace="layout/layout :: menuAll"></nav>
 
-    <h1 class="text-center mt-3">Registrar Usuarios</h1>
-    <div class="container col-md-6 mt-3">
-      <form th:action="@{/form}" th:object="${cliente}" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="n" th:field="*{nombre}" />
-          <small
-            th:if="${#fields.hasErrors('nombre')}"
-            th:errors="*{nombre}"
-            class="form-text text-danger"
-          ></small>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Apellido</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            th:field="*{apellido}"
-          />
-          <small
-            th:if="${#fields.hasErrors('nombre')}"
-            th:errors="*{apellido}"
-            class="form-text text-danger"
-          ></small>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            th:field="*{email}"
-          />
-          <small
-            th:if="${#fields.hasErrors('nombre')}"
-            th:errors="*{email}"
-            class="form-text text-danger"
-          ></small>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Fecha</label>
-          <input
-            type="date"
-            class="form-control"
-            id="exampleInputEmail1"
-            th:field="*{createAt}"
-          />
-          <small
-            th:if="${#fields.hasErrors('nombre')}"
-            th:errors="*{createAt}"
-            class="form-text text-danger"
-          ></small>
-        </div>
+  <!--formulario de registro de usuarios-->
 
-        <button type="submit" class="btn btn-primary">Enviar datos</button>
-      </form>
-    </div>
+  <h1 class="text-center mt-3">Registrar Usuarios</h1>
+  <div class="container col-md-6 mt-3">
 
-    <!--scripts de js-->
-    <div th:replace="layout/layout :: script"></div>
-  </body>
+    <form th:action="@{/form}" th:object="${cliente}" method="POST" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="n" th:field="*{nombre}" />
+        <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="form-text text-danger"></small>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" th:field="*{apellido}" />
+        <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{apellido}" class="form-text text-danger"></small>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" th:field="*{email}" />
+        <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{email}" class="form-text text-danger"></small>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="exampleInputEmail1" th:field="*{createAt}" />
+        <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{createAt}" class="form-text text-danger"></small>
+      </div>
+
+      <div class="mb-3">
+        <label for="foto" class="form-label">Subir foto</label>
+        <input type="file" name="file" class="form-control" id="exampleInputEmail1"/>
+        <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{createAt}" class="form-text text-danger"></small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar datos</button>
+    </form>
+  </div>
+
+  <!--scripts de js-->
+  <div th:replace="layout/layout :: script"></div>
+</body>
+
 </html>

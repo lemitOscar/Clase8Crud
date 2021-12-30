@@ -4,8 +4,13 @@ import java.util.List;
 
 import com.curso.seccion8.modelEntity.Cliente;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 public interface IclienteService {
     public List<Cliente> buscarTodos();
+
+    public Page<Cliente> buscarTodo(Pageable page);
 
     // guardar usuario
     public void guardar(Cliente cliente);

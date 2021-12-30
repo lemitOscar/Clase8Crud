@@ -2,8 +2,7 @@ package com.curso.seccion8.dao;
 
 
 import com.curso.seccion8.modelEntity.Cliente;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /*
  * Que es un DAO?
@@ -14,10 +13,7 @@ import org.springframework.data.repository.CrudRepository;
  * esta inerfaz tiene que tener los metodos necesarios para recuperar y almacenar los datos(contrato de implementacion)
  * con las operaciones basicas : crud y otras mas etc
  * */
-public interface IClienteDao extends CrudRepository<Cliente,Long>{
-
-
-
+public interface IClienteDao extends PagingAndSortingRepository<Cliente,Long>{
 
     //todo esto se puede generar de manera automatica
     // public List<Cliente> buscarTodos();

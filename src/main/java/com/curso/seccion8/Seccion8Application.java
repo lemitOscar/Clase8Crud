@@ -20,5 +20,6 @@ public class Seccion8Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		logMymessage.info("Inicie con exito...");
 	}
+	
 
 }
